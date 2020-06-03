@@ -1,9 +1,11 @@
-import React from "react";
+import React, { lazy } from "react";
 import pet from "@frontendmasters/pet";
 import { navigate } from "@reach/router";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundaries";
 import { ThemeContext } from "./ThemeContext";
+
+const Modal = lazy(() => import("./Modal"))
 
 class Details extends React.Component {
   state = { loading: true, showModal: false };
@@ -67,7 +69,7 @@ class Details extends React.Component {
         <span>{email}</span>
         <p>{description}</p>
         {showModal ? (
-          <div>
+          <Modal>
             <h1>Would you like to adopt {name}?</h1>
             <div className="button-group">
               <button onClick={this.adopt}>Yes</button>
@@ -75,7 +77,7 @@ class Details extends React.Component {
                 No, I am not ready yet! :(
               </button>
             </div>
-          </div>
+          </Modal>
         ) : null}
       </div>
     );

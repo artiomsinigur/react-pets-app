@@ -1,9 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
-import SearchParams from "./SearchParams";
 import { Router, Link } from "@reach/router";
-import Details from "./Details";
 import { ThemeContext } from "./ThemeContext";
+
+const Details = lazy(() => import("./Details"));
+const SearchParams = lazy(() => import("./SearchParams"));
 
 function App() {
   const themeHook = useState("tomato");
@@ -23,16 +24,18 @@ function App() {
             </ul>
           </header>
 
-          <Router>
-            <SearchParams path="/" />
-            <Details path="details/:id" />
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Router>
+              <SearchParams path="/" />
+              <Details path="details/:id" />
 
-            <Dashboard path="dashboard">
-              <Invoice path="invoice" />
-              <InvoiceItem path="invoice/:id" />
-              <Total path="total" />
-            </Dashboard>
-          </Router>
+              <Dashboard path="dashboard">
+                <Invoice path="invoice" />
+                <InvoiceItem path="invoice/:id" />
+                <Total path="total" />
+              </Dashboard>
+            </Router>
+          </Suspense>
         </Fragment>
       </ThemeContext.Provider>
     </React.StrictMode>
