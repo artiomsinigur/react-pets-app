@@ -15,7 +15,7 @@ const CallbackComponent = () => {
   useEffect(() => {
     const timer = setTimeout(setTime(new Date()), 1000);
     return () => clearTimeout(timer);
-  });
+  }, []);
 
   const fibonacci = n => {
     if (n <= 1) {

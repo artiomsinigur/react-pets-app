@@ -1,6 +1,7 @@
+// https://reactjs.org/docs/hooks-reference.html#usememo
 import React, { useState, useMemo } from "react";
 
-const fibonacci = n => {
+const fibonacci = (n) => {
   if (n <= 1) {
     return 1;
   }
@@ -12,6 +13,7 @@ const MemoComponent = () => {
   const [num, setNum] = useState(1);
   const [isGreen, setIsGreen] = useState(true);
   const fib = useMemo(() => fibonacci(num), [num]);
+  // const fib = fibonacci(num); // test without useMemo
 
   return (
     <div>

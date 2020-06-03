@@ -28330,7 +28330,7 @@ const EffectComponent = () => {
   (0, _react.useEffect)(() => {
     const timer = setTimeout(setTime(new Date()), 1000);
     return () => clearTimeout(timer);
-  });
+  }, []);
   return /*#__PURE__*/_react.default.createElement("h1", null, "useEffect Example: ", time.toLocaleTimeString());
 };
 
@@ -28532,6 +28532,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+// https://reactjs.org/docs/hooks-reference.html#usememo
 const fibonacci = n => {
   if (n <= 1) {
     return 1;
@@ -28543,7 +28544,8 @@ const fibonacci = n => {
 const MemoComponent = () => {
   const [num, setNum] = (0, _react.useState)(1);
   const [isGreen, setIsGreen] = (0, _react.useState)(true);
-  const fib = (0, _react.useMemo)(() => fibonacci(num), [num]);
+  const fib = (0, _react.useMemo)(() => fibonacci(num), [num]); // const fib = fibonacci(num); // test without useMemo
+
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", {
     onClick: () => setIsGreen(!isGreen),
     style: {
@@ -28583,7 +28585,7 @@ const CallbackComponent = () => {
   (0, _react.useEffect)(() => {
     const timer = setTimeout(setTime(new Date()), 1000);
     return () => clearTimeout(timer);
-  });
+  }, []);
 
   const fibonacci = n => {
     if (n <= 1) {
@@ -28863,7 +28865,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54248" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55775" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
