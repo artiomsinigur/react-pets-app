@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import SearchParams from "./SearchParams";
 import { Router, Link } from "@reach/router";
 import Details from "./Details";
+import NavBar from "./NavBar";
 import { ThemeContext } from "./ThemeContext";
 
 function App() {
@@ -12,17 +13,7 @@ function App() {
     <React.StrictMode>
       <ThemeContext.Provider value={themeHook}>
         <Fragment>
-          <header>
-            <ul>
-              <li>
-                <Link to="/">Adopt me!</Link>
-              </li>
-              <li>
-                <Link to="dashboard">Dashboard</Link>
-              </li>
-            </ul>
-          </header>
-
+          <NavBar />
           <Router>
             <SearchParams path="/" />
             <Details path="details/:id" />
