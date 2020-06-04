@@ -3,7 +3,7 @@ import Pet from "./Pet";
 
 export default function Results({ pets }) {
   return (
-    <div className="results">
+    <div className="results" data-testid="results">
       {!pets.length ? (
         <h1>No pets found</h1>
       ) : (

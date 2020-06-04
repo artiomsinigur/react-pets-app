@@ -16,15 +16,17 @@ export default function SearchParams() {
   const [_, setFoo] = useState("foo"); // eslint-disable-line
 
   // Fetch animals when click submit button
-  const handleFetchPets = async (e) => {
+  const handleFetchPets = (e) => {
     e.preventDefault();
-    const { animals } = await pet.animals({
-      location,
-      breed,
-      type: animal,
-    });
-
-    setPets(animals || []);
+    pet
+      .animals({
+        location,
+        breed,
+        type: animal,
+      })
+      .then(({ animals }) => {
+        setPets(animals || []);
+      });
   };
 
   // useEffect not will fire on the first render
