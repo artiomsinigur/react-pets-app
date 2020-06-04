@@ -1,5 +1,4 @@
 import React, { useState, Fragment } from "react";
-import ReactDOM from "react-dom";
 import SearchParams from "./SearchParams";
 import { Router, Link } from "@reach/router";
 import Details from "./Details";
@@ -68,4 +67,5 @@ function Total() {
   return <h1>Total page</h1>;
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+export default App;
+
